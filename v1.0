@@ -1,0 +1,21 @@
+# v1.0 — Exercícios de Python (Turma B Noturno)
+Primeira versão completa da lista de exercícios, com os 50 problemas resolvidos, testados e com saída registrada em cada célula.
+
+Novidades desta versão
+Lista completa com os 50 exercícios propostos, do nível básico (Hello World, soma de números) ao avançado (validação de CPF, Crivo de Eratóstenes, ordenação por inserção).
+Todas as células foram executadas e têm saída registrada, permitindo conferir o resultado de cada exercício sem precisar rodar o notebook novamente.
+Explicações escritas para cada exercício, descrevendo o raciocínio usado para chegar na solução.
+Correções aplicadas
+Exercício 18 (Número Primo): ajuste na verificação para números menores que 2, garantindo que 0 e 1 não sejam classificados como primos.
+Exercício 22 (Cifra de César): corrigido para que o deslocamento seja aplicado corretamente tanto em letras maiúsculas quanto minúsculas.
+Exercício 24 (Validação de CPF): implementado o cálculo dos dois dígitos verificadores (o código inicial validava apenas o primeiro).
+Exercício 27 (Anagramas): corrigida a limpeza de espaços na comparação das palavras.
+Exercício 28 (Gráfico de Barras): corrigida a chamada de plt.show() para exibir o gráfico corretamente.
+Estrutura do notebook
+1 célula de título
+50 pares de células (markdown com enunciado/explicação + código executável)
+Saídas de teste registradas em todas as células de código
+Próximos passos
+Adicionar tratamento de erro para entradas inválidas (ex: letras em campos numéricos) em exercícios que ainda não cobrem esse caso.
+Expandir o exercício 43 (Conversor de Unidades) para aceitar múltiplas unidades de origem e destino, não só metros para centímetros.
+Revisar o exercício 23, atualmente sem célula de código preenchida no momento da entrega original.
