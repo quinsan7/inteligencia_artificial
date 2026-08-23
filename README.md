@@ -1,51 +1,66 @@
 # Exercícios de Python — Turma B Noturno
 
-Coleção de exercícios de lógica de programação e Data Science resolvidos em Python, cobrindo desde conceitos básicos (entrada e saída, condicionais, laços de repetição) até estruturas de dados, funções, recursão, algoritmos clássicos e as principais bibliotecas de ciência de dados.
+Este repositório reúne exercícios desenvolvidos em Python para praticar fundamentos de programação e conceitos de Data Science. As atividades abrangem desde estruturas básicas da linguagem até a utilização de bibliotecas voltadas para computação científica, manipulação de dados e visualização.
 
-## Notebooks
+Conteúdo
+# 1. Exercícios de Lógica de Programação — 50 exercícios
 
-### 1. Exercícios de Lógica de Programação (50 exercícios)
+Conjunto de exercícios voltados à prática dos principais fundamentos da linguagem Python, incluindo:
 
-Prática de fixação dos principais fundamentos da linguagem Python: variáveis, tipos de dados, estruturas condicionais, laços `for` e `while`, funções, listas, dicionários e manipulação de strings.
+Variáveis e tipos de dados
+Entrada e saída de dados
+Estruturas condicionais
+Laços de repetição com for e while
+Funções
+Listas e dicionários
+Manipulação de strings
+Recursão
+Algoritmos e estruturas de dados
 
-Cada exercício contém:
-- O enunciado do problema
-- O código da solução
-- Uma explicação de como a lógica foi construída
-- A saída de um teste executado
+Cada exercício apresenta:
 
-### 2. Data Science — NumPy, SciPy, Pandas e Matplotlib (80 exercícios)
+O enunciado do problema
+O código desenvolvido como solução
+Uma explicação da lógica utilizada
+A saída de um teste executado
 
-Aplicação prática das principais bibliotecas de ciência de dados em Python, com 20 exercícios para cada biblioteca, cobrindo desde criação e manipulação de arrays até modelagem estatística, manipulação de dados tabulares e visualização.
+# 2. Exercícios de Data Science — 80 exercícios
 
-Alguns exercícios de Pandas exigem um arquivo de dados (leitura de Excel/CSV) — o dataset [Iris](https://archive.ics.uci.edu/dataset/53/iris) (`iris.data`) é usado como fonte para esses casos.
+Conjunto de exercícios práticos utilizando as principais bibliotecas de Data Science em Python, com 20 exercícios para cada biblioteca:
 
-## Como executar
+NumPy — criação e manipulação de arrays, matrizes e operações numéricas
+SciPy — computação científica, otimização, integração, álgebra linear e outros recursos
+Pandas — manipulação e análise de dados tabulares
+Matplotlib — criação e personalização de gráficos
+Arquivos de dados
 
-Os notebooks foram feitos para rodar no [Google Colab](https://colab.research.google.com/), mas também funcionam em qualquer ambiente Jupyter com Python 3.
+Alguns exercícios utilizam arquivos externos para a leitura e manipulação de dados. Os arquivos necessários estão disponíveis neste repositório, incluindo o dataset Iris, no arquivo iris.data.
 
-1. Abra o arquivo `.ipynb` desejado no Google Colab ou no Jupyter Notebook.
-2. Execute as células em ordem (**Ambiente de execução → Executar tudo**).
-3. Alguns exercícios pedem entrada de dados via `input()` — preencha os valores solicitados quando a célula pausar aguardando digitação.
-4. No notebook de Data Science, os exercícios que leem arquivo (Pandas 2 e 10) exigem o upload do `iris.data` na aba **Arquivos** do Colab antes de rodar.
+Ao executar os notebooks no Google Colab, faça o upload do arquivo solicitado pelo exercício antes de executar a célula correspondente.
 
-## Bibliotecas utilizadas
+Como executar
 
-- `math` — cálculos matemáticos (ex: valor de π)
-- `random` — geração de números e escolhas aleatórias
-- `string` — conjuntos de caracteres prontos (letras, dígitos)
-- `matplotlib` — geração de gráficos
-- `numpy` — arrays, matrizes e operações numéricas
-- `scipy` — computação científica (otimização, integração, álgebra linear, Fourier)
-- `pandas` — manipulação e análise de dados tabulares
+Os notebooks foram desenvolvidos para serem executados no Google Colab, mas também são compatíveis com ambientes que suportam Jupyter Notebook.
 
-Nenhuma biblioteca externa precisa ser instalada manualmente — todas já vêm disponíveis por padrão no Google Colab.
+Abra o arquivo .ipynb desejado no Google Colab ou em outro ambiente Jupyter.
+Execute as células em ordem ou utilize a opção Ambiente de execução → Executar tudo.
+Alguns exercícios solicitam dados por meio da função input(). Nesses casos, informe o valor solicitado quando a execução for pausada.
+Para exercícios que utilizam arquivos externos, faça o upload do arquivo correspondente no ambiente antes da execução.
+Bibliotecas utilizadas
+math — operações e cálculos matemáticos
+random — geração de números e escolhas aleatórias
+string — manipulação e utilização de conjuntos de caracteres
+NumPy — computação numérica e manipulação de arrays
+SciPy — computação científica e funções matemáticas
+Pandas — manipulação e análise de dados
+Matplotlib — criação e visualização de gráficos
+Requisitos
+Python 3.x
+Google Colab ou Jupyter Notebook
 
-## Requisitos
+As bibliotecas utilizadas já estão disponíveis por padrão no Google Colab.
 
-- Python 3.x
-- Jupyter Notebook ou Google Colab
+Autor
 
-## Autor
-
-Fernando Panichek Quinsan — Turma B Noturno
+Fernando Panichek Quinsan
+Turma B — Noturno
