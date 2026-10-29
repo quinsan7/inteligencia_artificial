@@ -56,7 +56,7 @@ Exercícios práticos com as principais bibliotecas de Data Science, sendo 20 pa
 
 Projeto de classificação supervisionada no dataset Iris (150 amostras, 4 atributos, 3 classes balanceadas com 50 amostras cada). Quatro algoritmos foram implementados em notebooks separados, e cada um compara duas abordagens de definição de hiperparâmetros: **com** e **sem** `GridSearchCV`.
 
-**Metodologia comum aos três notebooks**
+**Metodologia comum aos quatro notebooks**
 
 - Divisão treino/teste de 80/20, estratificada, com `random_state=42` (120 amostras de treino e 30 de teste)
 - Validação cruzada com 5 folds e métrica de acurácia
@@ -175,7 +175,7 @@ Projeto de regressão supervisionada com **Support Vector Regression (SVR)** sob
 - A meta de R² > 0,65 foi atingida (0,7711).
 - Quase todo o ganho vem da **padronização das variáveis e do preço**: o SVR sem escala teve R² negativo, pior que prever a média.
 - Tratar ausentes e outliers isoladamente teve efeito desprezível; a otimização de hiperparâmetros acrescentou cerca de 0,03 de R².
-- O modelo subestima os imóveis de valor máximo (o alvo é truncado em US$ 500.001): um valor real de US$ 500.001 foi previsto em ≈ US$ 323 mil.
+- O modelo tem dificuldade nos imóveis de valor máximo: há um acúmulo de regiões em US$ 500.001, que funciona como teto, e um valor real de US$ 500.001 foi previsto em ≈ US$ 323 mil.
 - Melhorias sugeridas: criar variáveis como quartos por domicílio, testar novas faixas de `C` e `gamma` (o melhor `C=10` está na borda da grade testada) e reduzir a redundância entre `total_rooms`, `total_bedrooms`, `population` e `households`.
 
 ### 5. Machine Learning — Classificação de famílias de peixes (FishMorph) com SVM
@@ -207,7 +207,8 @@ Projeto de classificação multiclasse com **SVM (`SVC`)** sobre o dataset *FISH
 
 **Principais conclusões**
 
-- O modelo acerta cerca de dois terços das famílias no teste, em um problema com 118 classes. A matriz de confusão mostra mais acertos nas famílias *Cyprinidae*, *Cichlidae*, *Characidae* e *Loricariidae*.
+- O modelo acerta cerca de dois terços das famílias no teste, em um problema com 118 classes. A matriz de confusão (20 famílias mais frequentes) mostra mais acertos em *Cyprinidae*, *Cichlidae*, *Characidae* e *Loricariidae*, que são as quatro famílias mais numerosas do conjunto.
+- Famílias menos frequentes tendem a ser confundidas com as maiores: por exemplo, 15 das 20 amostras de *Bagridae* no teste foram previstas como *Cyprinidae*.
 - **Ressalva:** essas são as famílias mais frequentes, então ter mais acertos em números absolutos não prova que o modelo as distingue melhor. Para isso seria preciso olhar o recall por classe. Além disso, a acurácia global em um conjunto com classes muito desbalanceadas pode ser inflada pelas classes grandes, e o notebook não compara o resultado com uma linha de base (por exemplo, sempre prever a família mais comum). Métricas como F1 macro complementariam a avaliação.
 
 ---
@@ -234,7 +235,7 @@ Projeto de classificação multiclasse com **SVM (`SVC`)** sobre o dataset *FISH
     └── fernando_panichek_quinsan_relatorio.pdf
 ```
 
-> Ajuste os nomes dos notebooks de lógica e de Data Science conforme os arquivos reais do repositório.
+> Ajuste os nomes dos notebooks de lógica e de Data Science conforme os arquivos reais do repositório, e mantenha na lista apenas os arquivos de dados que de fato forem enviados.
 
 ---
 
