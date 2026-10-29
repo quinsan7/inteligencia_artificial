@@ -4,7 +4,7 @@ Todas as mudanças relevantes deste repositório estão documentadas aqui, da ve
 
 ---
 
-## Release v7.0.0 — Classificação Multiclasse: Famílias de Peixes (FishMorph) com SVM
+## Release v8.0.0 — Classificação Multiclasse: Famílias de Peixes (FishMorph) com SVM
 
 **Data de entrega:** 08/10/2026
 **Turma B — Noturno**
@@ -38,7 +38,7 @@ Nenhuma mudança incompatível. Os conteúdos das versões anteriores permanecem
 
 ---
 
-## Release v6.0.0 — Regressão: Previsão de Preços de Imóveis com SVR
+## Release v7.0.0 — Regressão: Previsão de Preços de Imóveis com SVR
 
 **Data de entrega:** 01/10/2026
 **Turma B — Noturno**
@@ -70,6 +70,34 @@ Nenhuma mudança incompatível. Os conteúdos das versões anteriores permanecem
 ### Arquivos de dados
 
 - `housing.csv`, obtido do dataset [Housing no Kaggle](https://www.kaggle.com/datasets/kathuman/housing).
+
+### Compatibilidade
+
+Nenhuma mudança incompatível. Os conteúdos das versões anteriores permanecem inalterados.
+
+---
+
+## Release v6.0.0 — Classificação: Iris Species com Floresta Aleatória
+
+**Data de entrega:** 01/10/2026
+**Turma B — Noturno**
+
+### Novidades
+
+- Novo notebook `Iris_Species_com_Floresta_Aleatória.ipynb`: classificação das espécies de Iris com `RandomForestClassifier`.
+- Comparação **sem** `GridSearchCV` (parâmetros padrão) e **com** `GridSearchCV` sobre `n_estimators`, `max_depth`, `min_samples_split`, `min_samples_leaf` e `max_features`.
+- Curva de validação para `n_estimators`, importância das variáveis e importância por permutação.
+
+### Resultados
+
+| Configuração | Acurácia CV | Acurácia treino | Acurácia teste |
+|---|:---:|:---:|:---:|
+| Sem `GridSearchCV` (padrão) | 95,00% | 100,00% | 90,00% |
+| Com `GridSearchCV` (50 árvores, `max_depth=3`) | 95,83% | 98,33% | 96,67% |
+
+- Foi o modelo que mais se beneficiou do `GridSearchCV`: o teste subiu de 90,00% para 96,67%. Sem a busca, teve o pior desempenho entre todas as configurações do projeto (recall de 0,80 para *Iris-virginica*).
+- Limitar a profundidade das árvores reduziu o sobreajuste (treino de 100% para 98,33%).
+- A validação cruzada melhorou apenas 0,83 ponto percentual, e o teste possui 30 amostras; parte do ganho pode ser variação amostral.
 
 ### Compatibilidade
 
