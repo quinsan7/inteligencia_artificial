@@ -6,7 +6,7 @@ Todas as mudanças relevantes deste repositório estão documentadas aqui, da ve
 
 ## Release v7.0.0 — Classificação Multiclasse: Famílias de Peixes (FishMorph) com SVM
 
-**Data de entrega:** 29/10/2026
+**Data de entrega:** 08/10/2026
 **Turma B — Noturno**
 
 ### Novidades
@@ -40,7 +40,7 @@ Nenhuma mudança incompatível. Os conteúdos das versões anteriores permanecem
 
 ## Release v6.0.0 — Regressão: Previsão de Preços de Imóveis com SVR
 
-**Data de entrega:** 29/10/2026
+**Data de entrega:** 01/10/2026
 **Turma B — Noturno**
 
 ### Novidades
@@ -79,7 +79,7 @@ Nenhuma mudança incompatível. Os conteúdos das versões anteriores permanecem
 
 ## Release v5.0.0 — Classificação: Iris Species com Árvore de Decisão
 
-**Data de entrega:** 29/10/2026
+**Data de entrega:** 01/10/2026
 **Turma B — Noturno**
 
 ### Novidades
@@ -107,7 +107,7 @@ Nenhuma mudança incompatível. Os conteúdos das versões anteriores permanecem
 
 ## Release v4.0.0 — Classificação: Iris Species com Boosting
 
-**Data de entrega:** 29/10/2026
+**Data de entrega:** 01/10/2026
 **Turma B — Noturno**
 
 ### Novidades
@@ -135,7 +135,7 @@ Nenhuma mudança incompatível. Os conteúdos das versões anteriores permanecem
 
 ## Release v3.0.0 — Classificação: Iris Species com SVM
 
-**Data de entrega:** 29/10/2026
+**Data de entrega:** 10/09/2026
 **Turma B — Noturno**
 
 ### Novidades
@@ -173,7 +173,7 @@ Nenhuma mudança incompatível. Os conteúdos das versões anteriores permanecem
 
 ## Release v2.0.0 — Data Science: NumPy, SciPy, Pandas e Matplotlib
 
-**Data de entrega:** 21/08/2026
+**Data de entrega:** 23/08/2026
 **Turma B — Noturno**
 
 ### Novidades
