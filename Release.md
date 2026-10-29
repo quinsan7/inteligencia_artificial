@@ -25,7 +25,8 @@ Todas as mudanças relevantes deste repositório estão documentadas aqui, da ve
 | Melhores hiperparâmetros | kernel `rbf`, `C=10`, `gamma=0,1` |
 | Acurácia no teste | **66,97%** |
 
-- O modelo tem mais acertos nas famílias *Cyprinidae*, *Cichlidae*, *Characidae* e *Loricariidae*, que também são as mais frequentes; o resultado por classe (recall) não foi calculado.
+- O modelo tem mais acertos nas famílias *Cyprinidae*, *Cichlidae*, *Characidae* e *Loricariidae*, que também são as mais numerosas; o recall por classe não foi calculado.
+- Famílias menos frequentes tendem a ser confundidas com as maiores (por exemplo, 15 das 20 amostras de *Bagridae* no teste foram previstas como *Cyprinidae*).
 - O notebook não compara a acurácia com uma linha de base nem usa métricas robustas a desbalanceamento (como F1 macro), o que limita a interpretação do resultado.
 
 ### Arquivos de dados
@@ -65,7 +66,7 @@ Nenhuma mudança incompatível. Os conteúdos das versões anteriores permanecem
 - Kernels (`C=1`): rbf 0,7437 · poly 0,6527 · linear 0,6108.
 - Quase todo o ganho veio da padronização das variáveis e do preço (R² de -0,0485 para 0,7483). Preencher ausentes e limitar outliers teve efeito desprezível, e o `GridSearchCV` acrescentou cerca de 0,03.
 - Os outliers foram mantidos no modelo final por não haver evidência de erro nos dados.
-- O modelo subestima regiões de valor máximo (o alvo é truncado em US$ 500.001).
+- O modelo tem dificuldade nas regiões de valor máximo (há um acúmulo de regiões em US$ 500.001, que funciona como teto).
 
 ### Arquivos de dados
 
@@ -176,7 +177,7 @@ Nenhuma mudança incompatível. Os conteúdos das versões anteriores permanecem
 - Divisão treino/teste de 80/20, estratificada e reprodutível (`random_state=42`).
 - Avaliação com acurácia, `classification_report` e matriz de confusão.
 - Análise de sensibilidade com curva de validação para o hiperparâmetro `C` e importância de atributos por permutação.
-- Conclusão comparativa entre os modelos do projeto (SVM, Boosting e Árvore de Decisão).
+- Conclusão comparativa entre os modelos do projeto (SVM, Boosting, Floresta Aleatória e Árvore de Decisão).
 
 ### Resultados
 
