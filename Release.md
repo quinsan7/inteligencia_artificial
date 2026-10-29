@@ -4,6 +4,40 @@ Todas as mudanças relevantes deste repositório estão documentadas aqui, da ve
 
 ---
 
+## Release v7.0.0 — Classificação Multiclasse: Famílias de Peixes (FishMorph) com SVM
+
+**Data de entrega:** 29/10/2026
+**Turma B — Noturno**
+
+### Novidades
+
+- Novo notebook `Atividade_Entrega_FishMorphDB.ipynb`: classificação da **família** de peixes de água doce a partir de 10 medidas morfológicas, com `SVC`.
+- Limpeza dos dados (1 registro duplicado removido, sem valores ausentes) e seleção das famílias com pelo menos 5 registros, resultando em **118 classes** e 8.341 registros.
+- Divisão treino/teste de 80/20, estratificada e reprodutível (`random_state=42`).
+- `Pipeline` com `StandardScaler` + `SVC` e `GridSearchCV` com validação cruzada de 3 folds (64 combinações de `kernel`, `C` e `gamma`, totalizando 192 treinos).
+- Gráfico de distribuição das 30 famílias mais frequentes e matriz de confusão das 20 famílias mais frequentes no teste.
+- Cada bloco de código acompanhado de uma explicação em texto.
+
+### Resultados
+
+| Item | Valor |
+|---|---|
+| Melhores hiperparâmetros | kernel `rbf`, `C=10`, `gamma=0,1` |
+| Acurácia no teste | **66,97%** |
+
+- O modelo tem mais acertos nas famílias *Cyprinidae*, *Cichlidae*, *Characidae* e *Loricariidae*, que também são as mais frequentes; o resultado por classe (recall) não foi calculado.
+- O notebook não compara a acurácia com uma linha de base nem usa métricas robustas a desbalanceamento (como F1 macro), o que limita a interpretação do resultado.
+
+### Arquivos de dados
+
+- `FISHMORPH_Family_Dataset.csv`, utilizado pelo notebook (8.342 registros e 11 colunas).
+
+### Compatibilidade
+
+Nenhuma mudança incompatível. Os conteúdos das versões anteriores permanecem inalterados.
+
+---
+
 ## Release v6.0.0 — Regressão: Previsão de Preços de Imóveis com SVR
 
 **Data de entrega:** 29/10/2026
