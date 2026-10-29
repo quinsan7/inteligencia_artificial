@@ -4,7 +4,7 @@
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange)
 ![Google Colab](https://img.shields.io/badge/Google%20Colab-compatível-yellow)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-green)
-![Versão](https://img.shields.io/badge/versão-v6.0.0-lightgrey)
+![Versão](https://img.shields.io/badge/versão-v7.0.0-lightgrey)
 
 Repositório com exercícios e projetos desenvolvidos em Python ao longo do curso, cobrindo desde os fundamentos de programação até Data Science e Machine Learning aplicado (classificação e regressão). Cada atividade traz código, explicação da lógica e saída de execução registrada em notebooks.
 
@@ -163,6 +163,38 @@ Projeto de regressão supervisionada com **Support Vector Regression (SVR)** sob
 - O modelo subestima os imóveis de valor máximo (o alvo é truncado em US$ 500.001): um valor real de US$ 500.001 foi previsto em ≈ US$ 323 mil.
 - Melhorias sugeridas: criar variáveis como quartos por domicílio, testar novas faixas de `C` e `gamma` (o melhor `C=10` está na borda da grade testada) e reduzir a redundância entre `total_rooms`, `total_bedrooms`, `population` e `households`.
 
+### 5. Machine Learning — Classificação de famílias de peixes (FishMorph) com SVM
+
+Projeto de classificação multiclasse com **SVM (`SVC`)** sobre o dataset *FISHMORPH*, que reúne medidas morfológicas de peixes de água doce. O objetivo é prever a **família** do peixe (`Family`) a partir de 10 características morfológicas numéricas.
+
+**Arquivo:** `Atividade_Entrega_FishMorphDB.ipynb`
+
+**Dados**
+
+- 8.342 registros e 11 colunas (10 atributos numéricos e a família); sem valores ausentes e com 1 registro duplicado, removido (8.341 registros após a limpeza).
+- Atributos: `MBl`, `BEl`, `VEp`, `REs`, `OGp`, `RMl`, `BLs`, `PFv`, `PFs` e `CPt`.
+- Foram mantidas apenas as famílias com **pelo menos 5 registros**, resultando em **118 classes**.
+
+**Metodologia**
+
+- Divisão treino/teste de 80/20, estratificada, com `random_state=42`
+- `Pipeline` com `StandardScaler` + `SVC`
+- `GridSearchCV` com validação cruzada de 3 folds e métrica de acurácia, testando 64 combinações (192 treinos): `kernel ∈ {linear, poly, rbf, sigmoid}`, `C ∈ {0,1; 1; 10; 100}` e `gamma ∈ {0,001; 0,01; 0,1; 1}`
+- Avaliação com acurácia e matriz de confusão das 20 famílias mais frequentes no teste
+
+**Resultados**
+
+| Item | Valor |
+|---|---|
+| Melhores hiperparâmetros | kernel `rbf`, `C=10`, `gamma=0,1` |
+| Acurácia no teste | **66,97%** |
+| Número de classes | 118 |
+
+**Principais conclusões**
+
+- O modelo acerta cerca de dois terços das famílias no teste, em um problema com 118 classes. A matriz de confusão mostra mais acertos nas famílias *Cyprinidae*, *Cichlidae*, *Characidae* e *Loricariidae*.
+- **Ressalva:** essas são as famílias mais frequentes, então ter mais acertos em números absolutos não prova que o modelo as distingue melhor. Para isso seria preciso olhar o recall por classe. Além disso, a acurácia global em um conjunto com classes muito desbalanceadas pode ser inflada pelas classes grandes, e o notebook não compara o resultado com uma linha de base (por exemplo, sempre prever a família mais comum). Métricas como F1 macro complementariam a avaliação.
+
 ---
 
 ## Estrutura do repositório
@@ -174,12 +206,14 @@ Projeto de regressão supervisionada com **Support Vector Regression (SVR)** sob
 ├── iris.data                                  # Dataset Iris (exercícios de Pandas)
 ├── Iris.csv                                   # Dataset Iris em CSV (projeto de classificação)
 ├── housing.csv                                # Dataset California Housing (projeto de regressão)
+├── FISHMORPH_Family_Dataset.csv               # Dataset FishMorph (classificação de famílias de peixes)
 ├── <notebook-logica>.ipynb                    # 50 exercícios de Lógica de Programação
 ├── <notebook-data-science>.ipynb              # 80 exercícios de Data Science
 ├── Iris_Species_com_SVM.ipynb                 # Classificação: SVM
 ├── Iris_Species_com_Boosting.ipynb            # Classificação: Boosting
 ├── Iris_Species_com_Arvore_de_Decisão.ipynb   # Classificação: Árvore de Decisão
 ├── Fernando_Panichek_Quinsan_SVM.ipynb        # Regressão: SVR (Housing)
+├── Atividade_Entrega_FishMorphDB.ipynb        # Classificação multiclasse: SVM (FishMorph)
 └── relatorios/
     └── fernando_panichek_quinsan_relatorio.pdf
 ```
@@ -193,13 +227,15 @@ Projeto de regressão supervisionada com **Support Vector Regression (SVR)** sob
 - `iris.data`: utilizado nos exercícios de Pandas que leem arquivos externos.
 - `Iris.csv`: utilizado nos notebooks de classificação. Fonte: [Iris Species no Kaggle](https://www.kaggle.com/datasets/menegidio/iris-species). Os notebooks removem a coluna `Id` após a leitura.
 - `housing.csv`: utilizado no projeto de regressão. Fonte: [Housing no Kaggle](https://www.kaggle.com/datasets/kathuman/housing).
+- `FISHMORPH_Family_Dataset.csv`: utilizado no projeto de classificação de famílias de peixes (base FISHMORPH, de medidas morfológicas de peixes de água doce).
 
-Ao executar no Google Colab, faça o upload do arquivo solicitado antes de rodar a célula correspondente. Os notebooks de Machine Learning foram executados no Kaggle e leem os dados de caminhos do Kaggle; ao rodar em outro ambiente, ajuste o `pd.read_csv`:
+Ao executar no Google Colab, faça o upload do arquivo solicitado antes de rodar a célula correspondente. Os notebooks de Machine Learning leem os dados de caminhos específicos do Kaggle ou do Colab; ao rodar em outro ambiente, ajuste o `pd.read_csv`:
 
 | Notebooks | Caminho original |
 |---|---|
 | Iris (SVM, Boosting, Árvore) | `/kaggle/input/datasets/menegidio/iris-species/Iris.csv` |
 | Housing (SVR) | `/kaggle/input/datasets/kathuman/housing/housing.csv` |
+| FishMorph (SVM) | `/content/FISHMORPH_Family_Dataset.csv` |
 
 ---
 
@@ -245,6 +281,7 @@ pip install numpy scipy pandas matplotlib seaborn scikit-learn
 
 | Versão | Entrega | Conteúdo |
 |---|---|---|
+| **v7.0.0** | 29/10/2026 | Classificação multiclasse: famílias de peixes (FishMorph) com SVM e `GridSearchCV` |
 | **v6.0.0** | 29/10/2026 | Regressão: previsão de preços de imóveis (Housing) com SVR + relatório em PDF |
 | **v5.0.0** | 29/10/2026 | Classificação: Iris Species com Árvore de Decisão (com e sem `GridSearchCV`) |
 | **v4.0.0** | 29/10/2026 | Classificação: Iris Species com Boosting (com e sem `GridSearchCV`) |
