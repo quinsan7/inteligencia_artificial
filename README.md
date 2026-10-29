@@ -4,7 +4,7 @@
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange)
 ![Google Colab](https://img.shields.io/badge/Google%20Colab-compatível-yellow)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-green)
-![Versão](https://img.shields.io/badge/versão-v7.0.0-lightgrey)
+![Versão](https://img.shields.io/badge/versão-v8.0.0-lightgrey)
 
 Repositório com exercícios e projetos desenvolvidos em Python ao longo do curso, cobrindo desde os fundamentos de programação até Data Science e Machine Learning aplicado (classificação e regressão). Cada atividade traz código, explicação da lógica e saída de execução registrada em notebooks.
 
@@ -54,7 +54,7 @@ Exercícios práticos com as principais bibliotecas de Data Science, sendo 20 pa
 
 ### 3. Machine Learning — Classificação de espécies de Iris
 
-Projeto de classificação supervisionada no dataset Iris (150 amostras, 4 atributos, 3 classes balanceadas com 50 amostras cada). Três algoritmos foram implementados em notebooks separados, e cada um compara duas abordagens de definição de hiperparâmetros: **com** e **sem** `GridSearchCV`.
+Projeto de classificação supervisionada no dataset Iris (150 amostras, 4 atributos, 3 classes balanceadas com 50 amostras cada). Quatro algoritmos foram implementados em notebooks separados, e cada um compara duas abordagens de definição de hiperparâmetros: **com** e **sem** `GridSearchCV`.
 
 **Metodologia comum aos três notebooks**
 
@@ -102,7 +102,20 @@ A busca em grade escolheu exatamente os hiperparâmetros usados no modelo sem bu
 
 A busca melhorou a validação cruzada em menos de um ponto percentual e piorou o teste em uma amostra, sem ganho real. Em ambas as configurações foi o modelo com menor acurácia em validação cruzada, comportamento esperado de uma árvore única, mais instável que métodos de conjunto.
 
-#### 3.4 Comparativo dos modelos
+#### 3.4 Floresta Aleatória
+
+**Arquivo:** `Iris_Species_com_Floresta_Aleatória.ipynb`
+
+`RandomForestClassifier`. Espaço de busca: `n_estimators ∈ {50, 100, 200}`, `max_depth ∈ {3, 5, 10, None}`, `min_samples_split ∈ {2, 5}`, `min_samples_leaf ∈ {1, 2}`, `max_features ∈ {sqrt, log2}`. Sensibilidade: curva de validação para `n_estimators`, importância das variáveis e importância por permutação.
+
+| Configuração | Hiperparâmetros | Acurácia CV | Acurácia treino | Acurácia teste |
+|---|---|:---:|:---:|:---:|
+| Sem `GridSearchCV` | parâmetros padrão (100 árvores, sem limite de profundidade) | 95,00% | 100,00% | 90,00% |
+| Com `GridSearchCV` | 50 árvores, `max_depth=3`, `max_features='sqrt'` | **95,83%** | 98,33% | **96,67%** |
+
+Sem a busca, o recall no teste foi de 0,90 para *Iris-versicolor* e 0,80 para *Iris-virginica*, o pior desempenho entre todas as configurações. Com a busca, subiu para 1,00, 0,90 e 1,00 (*setosa*, *versicolor* e *virginica*). A limitação de profundidade das árvores reduziu o sobreajuste (treino de 100% para 98,33%). **Ressalva:** a validação cruzada melhorou apenas 0,83 ponto percentual, então parte do ganho no teste (3 erros para 1) pode ser variação da amostra pequena.
+
+#### 3.5 Comparativo dos modelos
 
 | Modelo | Configuração | Acurácia CV | Acurácia teste |
 |---|---|:---:|:---:|
@@ -112,10 +125,12 @@ A busca melhorou a validação cruzada em menos de um ponto percentual e piorou 
 | Boosting | Com `GridSearchCV` | 96,67% | 96,67% |
 | Árvore de Decisão | Sem `GridSearchCV` | 93,33% | 96,67% |
 | Árvore de Decisão | Com `GridSearchCV` | 94,17% | 93,33% |
+| Floresta Aleatória | Sem `GridSearchCV` | 95,00% | 90,00% |
+| Floresta Aleatória | Com `GridSearchCV` | 95,83% | 96,67% |
 
 - A *Iris-setosa* foi classificada sem erros por todos os modelos; as confusões ocorrem entre *Iris-versicolor* e *Iris-virginica*.
-- Boosting e SVM (sem `GridSearchCV`) tiveram os melhores resultados no teste, ambos com 96,67%.
-- O `GridSearchCV` não trouxe ganho consistente neste dataset: melhorou a validação cruzada no SVM e na Árvore, mas o teste caiu de 96,67% para 93,33% nos dois casos.
+- Boosting e SVM (sem `GridSearchCV`) tiveram a melhor combinação de validação cruzada e teste, ambos com 96,67% nas duas métricas. Árvore (sem busca) e Floresta (com busca) também chegaram a 96,67% no teste, mas com validação cruzada menor.
+- O `GridSearchCV` não trouxe ganho consistente neste dataset: a Floresta Aleatória foi a que mais se beneficiou (teste de 90,00% para 96,67%), o Boosting ficou igual, e no SVM e na Árvore a validação cruzada melhorou mas o teste caiu de 96,67% para 93,33%.
 - **Ressalva:** o conjunto de teste tem apenas 30 amostras, então cada diferença entre modelos equivale a 1 ou 2 observações. Os resultados não bastam para afirmar superioridade estatística de um modelo sobre outro.
 
 ### 4. Machine Learning — Regressão: previsão de preços de imóveis com SVR
@@ -212,6 +227,7 @@ Projeto de classificação multiclasse com **SVM (`SVC`)** sobre o dataset *FISH
 ├── Iris_Species_com_SVM.ipynb                 # Classificação: SVM
 ├── Iris_Species_com_Boosting.ipynb            # Classificação: Boosting
 ├── Iris_Species_com_Arvore_de_Decisão.ipynb   # Classificação: Árvore de Decisão
+├── Iris_Species_com_Floresta_Aleatória.ipynb  # Classificação: Floresta Aleatória
 ├── Fernando_Panichek_Quinsan_SVM.ipynb        # Regressão: SVR (Housing)
 ├── Atividade_Entrega_FishMorphDB.ipynb        # Classificação multiclasse: SVM (FishMorph)
 └── relatorios/
@@ -233,7 +249,7 @@ Ao executar no Google Colab, faça o upload do arquivo solicitado antes de rodar
 
 | Notebooks | Caminho original |
 |---|---|
-| Iris (SVM, Boosting, Árvore) | `/kaggle/input/datasets/menegidio/iris-species/Iris.csv` |
+| Iris (SVM, Boosting, Árvore, Floresta) | `/kaggle/input/datasets/menegidio/iris-species/Iris.csv` |
 | Housing (SVR) | `/kaggle/input/datasets/kathuman/housing/housing.csv` |
 | FishMorph (SVM) | `/content/FISHMORPH_Family_Dataset.csv` |
 
@@ -260,7 +276,7 @@ Os notebooks foram desenvolvidos para o Google Colab e Kaggle, e também funcion
 | Pandas | Manipulação e análise de dados |
 | Matplotlib | Visualização de dados |
 | Seaborn | Mapa de calor da matriz de correlação |
-| scikit-learn | Pipelines, SVM/SVR, Gradient Boosting, Árvore de Decisão, `GridSearchCV`, validação cruzada e métricas |
+| scikit-learn | Pipelines, SVM/SVR, Gradient Boosting, Árvore de Decisão, Floresta Aleatória, `GridSearchCV`, validação cruzada e métricas |
 
 ---
 
@@ -281,8 +297,9 @@ pip install numpy scipy pandas matplotlib seaborn scikit-learn
 
 | Versão | Entrega | Conteúdo |
 |---|---|---|
-| **v7.0.0** | 08/10/2026 | Classificação multiclasse: famílias de peixes (FishMorph) com SVM e `GridSearchCV` |
-| **v6.0.0** | 01/10/2026 | Regressão: previsão de preços de imóveis (Housing) com SVR + relatório em PDF |
+| **v8.0.0** | 08/10/2026 | Classificação multiclasse: famílias de peixes (FishMorph) com SVM e `GridSearchCV` |
+| **v7.0.0** | 01/10/2026 | Regressão: previsão de preços de imóveis (Housing) com SVR + relatório em PDF |
+| **v6.0.0** | 01/10/2026 | Classificação: Iris Species com Floresta Aleatória (com e sem `GridSearchCV`) |
 | **v5.0.0** | 01/10/2026 | Classificação: Iris Species com Árvore de Decisão (com e sem `GridSearchCV`) |
 | **v4.0.0** | 01/10/2026 | Classificação: Iris Species com Boosting (com e sem `GridSearchCV`) |
 | **v3.0.0** | 10/09/2026 | Classificação: Iris Species com SVM (com e sem `GridSearchCV`) |
