@@ -281,12 +281,12 @@ pip install numpy scipy pandas matplotlib seaborn scikit-learn
 
 | Versão | Entrega | Conteúdo |
 |---|---|---|
-| **v7.0.0** | 29/10/2026 | Classificação multiclasse: famílias de peixes (FishMorph) com SVM e `GridSearchCV` |
-| **v6.0.0** | 29/10/2026 | Regressão: previsão de preços de imóveis (Housing) com SVR + relatório em PDF |
-| **v5.0.0** | 29/10/2026 | Classificação: Iris Species com Árvore de Decisão (com e sem `GridSearchCV`) |
-| **v4.0.0** | 29/10/2026 | Classificação: Iris Species com Boosting (com e sem `GridSearchCV`) |
-| **v3.0.0** | 29/10/2026 | Classificação: Iris Species com SVM (com e sem `GridSearchCV`) |
-| **v2.0.0** | 21/08/2026 | 80 exercícios de Data Science (NumPy, SciPy, Pandas e Matplotlib) |
+| **v7.0.0** | 08/10/2026 | Classificação multiclasse: famílias de peixes (FishMorph) com SVM e `GridSearchCV` |
+| **v6.0.0** | 01/10/2026 | Regressão: previsão de preços de imóveis (Housing) com SVR + relatório em PDF |
+| **v5.0.0** | 01/10/2026 | Classificação: Iris Species com Árvore de Decisão (com e sem `GridSearchCV`) |
+| **v4.0.0** | 01/10/2026 | Classificação: Iris Species com Boosting (com e sem `GridSearchCV`) |
+| **v3.0.0** | 10/09/2026 | Classificação: Iris Species com SVM (com e sem `GridSearchCV`) |
+| **v2.0.0** | 23/08/2026 | 80 exercícios de Data Science (NumPy, SciPy, Pandas e Matplotlib) |
 | **v1.0.0** | 16/08/2026 | 50 exercícios de Lógica de Programação em Python |
 
 Detalhes completos em [RELEASES.md](RELEASES.md).
